@@ -1,0 +1,26 @@
+<mat-toolbar color="accent">
+    <span>Birthday Planning</span>
+</mat-toolbar>
+<br><br>
+<div>
+    <mat-card>
+        <mat-card-title fxLayout="row" fxLayoutAlign="space-around center"> Add a Guest</mat-card-title><br>
+        <form #guestPost="ngForm" (ngSubmit)="onSubmit(guestPost)">
+            <mat-card-content>
+                <input type="text" name="firstName" placeholder="Firstname" [ngModel]="user ? user.firstName : ''">
+                <br><br>
+                <input type="text" name="lastName" placeholder="Lastname" [ngModel]="user ? user.lastName : ''">
+                <br><br>
+                <input type="text" name="email" placeholder="Email" [ngModel]="user ? user.email : ''">
+
+                <input type="hidden" name="id" [ngModel]="user ? user.id : ''">
+
+            </mat-card-content>
+            <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center">
+                <button mat-button color="accent" (click)="back()">Back </button>
+                <button mat-button color="accent" type="submit">Confirm</button>
+            </mat-card-actions>
+        </form>
+
+    </mat-card>
+</div>

@@ -1,0 +1,33 @@
+<mat-toolbar color="accent">
+  <span>Birthday Planning</span>
+</mat-toolbar>
+
+<br><br>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <div class="example-container">
+    <h2>Potential Guests</h2>
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="guests" [cdkDropListConnectedTo]="[doneList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of guests" cdkDrag>
+        <app-guest [guest]="item" (idToDelete)="getGuest()">
+        </app-guest>
+      </div>
+    </div>
+    <br>
+    <button mat-button color="accent" (click)="add()">Add guest</button>
+  </div>
+
+  <div class="example-container">
+    <h2>Confirmed guests</h2>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>
+        <app-guest [guest]="item" (idToDelete)="getGuest()">
+        </app-guest>
+      </div>
+    </div>
+    <button mat-button color="accent" (click)="invite()">Send invitations</button>
+  </div>
+
+</div>
